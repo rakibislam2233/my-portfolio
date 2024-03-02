@@ -2,8 +2,8 @@ import Image from "next/image";
 import logo from "@/public/assets/image/logo.jpg";
 const Sidebar = () => {
   return (
-    <div className="w-full max-w-[1200px] mx-auto md:h-screen flex justify-center">
-      <div className="mt-20">
+    <div className="w-full max-w-[1200px] mx-auto md:h-screen md:flex justify-center">
+      <div className="mt-20 flex flex-row md:flex-col justify-between md:justify-normal gap-5 px-10 ">
         <div className="space-y-2">
           <Image
             className="rounded-full mx-auto"
@@ -25,9 +25,6 @@ const Sidebar = () => {
             </li>
             <li className="w-full px-3 py-2 hover:bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer transition-all duration-500 rounded-xl">
               Project
-            </li>
-            <li className="w-full px-3 py-2 hover:bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer transition-all duration-500 rounded-xl">
-              Blogs
             </li>
             <li className="w-full px-3 py-2 hover:bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer transition-all duration-500 rounded-xl">
               Contact
