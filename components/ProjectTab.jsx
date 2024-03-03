@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import ProjectDetails from "./ProjectDetails";
 const ProjectTab = () => {
   const [isTab, setIsTab] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
@@ -8,7 +9,7 @@ const ProjectTab = () => {
     {
       projectName: "Artistry ",
       projectDescription: "This is a MERN related website",
-      projectImage: "https://i.postimg.cc/c4zkjsZd/art.png",
+      projectImage: "https://i.ibb.co/RgPXnz1/art.png",
       technology: ["react", "node", "express", "mongodb"],
       liveLink: "",
       sourceCode: "",
@@ -16,7 +17,7 @@ const ProjectTab = () => {
     {
       projectName: "Laroja",
       projectDescription: "This is a MERN related website",
-      projectImage: "https://i.postimg.cc/d02WLrC0/laroja.png",
+      projectImage: "https://i.ibb.co/mcv25cf/laroja.png",
       technology: ["nextjs", "redux", "mongodb", "vercel"],
       liveLink: "",
       sourceCode: "",
@@ -24,7 +25,7 @@ const ProjectTab = () => {
     {
       projectName: "Legostoy ",
       projectDescription: "This is a MERN related website",
-      projectImage: "https://i.postimg.cc/ZnRj7QM9/legostoy.png",
+      projectImage: "https://i.ibb.co/W0Yt1xt/legostoy.png",
       technology: ["react", "node", "mongodb", "firebase"],
       liveLink: "",
       sourceCode: "",
@@ -32,7 +33,7 @@ const ProjectTab = () => {
     {
       projectName: "Musicy ",
       projectDescription: "This is a MERN related website",
-      projectImage: "https://i.postimg.cc/3R9nZhn5/music.png",
+      projectImage: "https://i.ibb.co/QJF00rp/music.png",
       technology: ["react", "node", "mongodb", "firebase"],
       liveLink: "",
       sourceCode: "",
@@ -40,16 +41,8 @@ const ProjectTab = () => {
     {
       projectName: "TKGBDS ",
       projectDescription: "This is a MERN related website",
-      projectImage: "https://i.postimg.cc/7L8sHmfc/tkgbds.png",
+      projectImage: "https://i.ibb.co/b1t54RP/tkgbds.png",
       technology: ["nextjs", "node", "mongodb", "firebase"],
-      liveLink: "",
-      sourceCode: "",
-    },
-    {
-      projectName: "Artistry ",
-      projectDescription: "This is a MERN related website",
-      projectImage: "https://i.postimg.cc/c4zkjsZd/art.png",
-      technology: ["react", "node", "mongodb", "firebase"],
       liveLink: "",
       sourceCode: "",
     },
@@ -80,7 +73,6 @@ const ProjectTab = () => {
     indexOfFirstProject,
     indexOfLastProject
   );
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -124,39 +116,15 @@ const ProjectTab = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
-        {currentProjects.map((project, i) => (
-          <div key={i} className="border border-gray-700 rounded-xl">
-            <div className="image-wrap rounded-t-xl">
-              <img
-                className="rounded-t-xl cursor-pointer"
-                src={project.projectImage}
-                alt={project.projectName}
-              />
-            </div>
-            <div className="px-3 py-2">
-              <h1 className="text-3xl font-semibold">{project.projectName}</h1>
-              <p className="font-semibold">{project.projectDescription}</p>
-              <div className="flex justify-center gap-2 items-center my-3 flex-wrap">
-                {project.technology.map((tech, index) => (
-                  <h1
-                    key={index}
-                    className="px-3 py-1 bg-gray-800 rounded-xl text-sm"
-                  >
-                    {tech}
-                  </h1>
-                ))}
-              </div>
-              <div className="py-3 flex justify-between items-center">
-                <button className="px-5 py-1 border border-gray-700 hover:bg-gradient-to-r from-orange-500 to-pink-500  rounded-xl font-semibold transition-all duration-500 ">
-                  Live Link
-                </button>
-                <button className="px-5 py-1 border border-gray-700 hover:bg-gradient-to-r from-orange-500 to-pink-500  rounded-xl font-semibold transition-all duration-500 ">
-                  Source Code
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
+        {currentProjects.length > 0 ? (
+          currentProjects.map((project, i) => (
+            <ProjectDetails key={i} project={project} />
+          ))
+        ) : (
+          <h1 className="text-xl font-semibold text-center">
+            No Data Avaiable
+          </h1>
+        )}
       </div>
       <div className="mt-8 flex justify-center items-center">
         {Array(Math.ceil(filteredProjects.length / projectsPerPage))

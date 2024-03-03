@@ -5,6 +5,7 @@ const Contact = () => {
   return (
     <section className="w-full max-w-[1200px] mx-auto py-10">
     <TitleAnimation text={"Contact"} subText={"Let’s Talk"} />
+    
   </section>
   )
 }
