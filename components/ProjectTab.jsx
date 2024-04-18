@@ -1,52 +1,17 @@
 "use client";
-import { useState } from "react";
+import { getProject } from "@/action/getProject";
+import { useEffect, useState } from "react";
 import ProjectDetails from "./ProjectDetails";
 const ProjectTab = () => {
   const [isTab, setIsTab] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const [projects, setProjects] = useState([]);
   const projectsPerPage = 3;
-  const projects = [
-    {
-      projectName: "Artistry ",
-      projectDescription: "This is a MERN related website",
-      projectImage: "https://i.ibb.co/RgPXnz1/art.png",
-      technology: ["react", "node", "express", "mongodb"],
-      liveLink: "",
-      sourceCode: "",
-    },
-    {
-      projectName: "Laroja",
-      projectDescription: "This is a MERN related website",
-      projectImage: "https://i.ibb.co/mcv25cf/laroja.png",
-      technology: ["nextjs", "redux", "mongodb", "vercel"],
-      liveLink: "",
-      sourceCode: "",
-    },
-    {
-      projectName: "Legostoy ",
-      projectDescription: "This is a MERN related website",
-      projectImage: "https://i.ibb.co/W0Yt1xt/legostoy.png",
-      technology: ["react", "node", "mongodb", "firebase"],
-      liveLink: "",
-      sourceCode: "",
-    },
-    {
-      projectName: "Musicy ",
-      projectDescription: "This is a MERN related website",
-      projectImage: "https://i.ibb.co/QJF00rp/music.png",
-      technology: ["react", "node", "mongodb", "firebase"],
-      liveLink: "",
-      sourceCode: "",
-    },
-    {
-      projectName: "TKGBDS ",
-      projectDescription: "This is a MERN related website",
-      projectImage: "https://i.ibb.co/b1t54RP/tkgbds.png",
-      technology: ["nextjs", "node", "mongodb", "firebase"],
-      liveLink: "",
-      sourceCode: "",
-    },
-  ];
+
+  const fetchProject = async () => {
+    const projects = await getProject();
+    setProjects(projects);
+  };
   const filterProjects = (tab) => {
     if (tab === "all") {
       return projects;
@@ -75,6 +40,9 @@ const ProjectTab = () => {
   );
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  useEffect(() => {
+    fetchProject();
+  }, []);
   return (
     <>
       <div className="flex justify-center items-center mt-8">

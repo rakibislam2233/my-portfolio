@@ -1,4 +1,6 @@
-const ProjectDetails = ({project}) => {
+import Link from "next/link";
+
+const ProjectDetails = ({ project }) => {
   return (
     <div className="border border-gray-700 rounded-xl">
       <div className="image-wrap rounded-t-xl">
@@ -22,12 +24,16 @@ const ProjectDetails = ({project}) => {
           ))}
         </div>
         <div className="py-3 flex justify-between items-center">
-          <button className="px-5 py-1 border border-gray-700 hover:bg-gradient-to-r from-orange-500 to-pink-500  rounded-xl font-semibold transition-all duration-500 ">
-            Live Link
-          </button>
-          <button className="px-5 py-1 border border-gray-700 hover:bg-gradient-to-r from-orange-500 to-pink-500  rounded-xl font-semibold transition-all duration-500 ">
-            Source Code
-          </button>
+          <Link href={project?.liveLink} target="_blank">
+            <button className="px-5 py-1 border border-gray-700 hover:bg-gradient-to-r from-orange-500 to-pink-500  rounded-xl font-semibold transition-all duration-500 ">
+              Live Link
+            </button>
+          </Link>
+          <Link href={project?.sourceCode} target="_blank">
+            <button className="px-5 py-1 border border-gray-700 hover:bg-gradient-to-r from-orange-500 to-pink-500  rounded-xl font-semibold transition-all duration-500 ">
+              Source Code
+            </button>
+          </Link>
         </div>
       </div>
     </div>
